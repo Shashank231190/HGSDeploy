@@ -4,9 +4,11 @@ A vTPM is a software-based representation of a physical Trusted Platform Module 
 
 If you have a guarded Host and you don't want to use Shielded VM but you need TPM on Virtual Machine then you need to make sure you are running as Local Mode on Guarded Host.
 We can switch the mode to Local by using below command.
+
 Set-HGSClientConfiguration -EnableLocalMode
 
 We can check the current client configuration of guarded host by running below command,
+
 Get-HgsClientConfiguration
 
 ![image](https://user-images.githubusercontent.com/71546848/180092639-7f3538b6-e6e4-4289-99c7-e2c68a4d42f3.png)
