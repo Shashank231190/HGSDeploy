@@ -19,6 +19,17 @@ Set-HgsClientConfiguration -AttestationServerUrl "http://Myhgs.Hgslab.local/Atte
 
 
 When we will enable the vTPM on Virtual Machine it will generate two certificates in certificate store under "Shielded VM Local Certificates"
+
+We can run below commands to enable vTPM on Virtual machine.
+
+    $vm = get-vm -name “VM5"
+
+    Set-VMKeyProtector -VMName “Vm5" -NewLocalKeyProtector
+
+    Enable-VMTPM -VM $vm
+
+    Get-VMSecurity $vm
+
 Each VM will have its own key protector associated with the Signing and Encryption certificate stored in certificate store.
 
 ![image](https://user-images.githubusercontent.com/71546848/180095327-5ab681cf-8ec1-476c-aa78-abd125629a1c.png)
