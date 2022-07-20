@@ -1,5 +1,6 @@
 # HGS-LAB
-![LAB Setup](https://user-images.githubusercontent.com/71546848/179955498-b93bec23-6f83-469b-b582-22b2d8c35261.jpg)
+![Hgs_Lab](https://user-images.githubusercontent.com/71546848/179957263-bdd98fe3-feaa-44bd-afea-f63aabcaffd1.jpg)
+
 Step 1: Components required for setting up a Shielded VM environment
 
 2 HGS Cluster Nodes – 	(Hgslab.local)
