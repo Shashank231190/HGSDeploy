@@ -30,7 +30,8 @@ certutil -exportPFX -p "L@m12345" "Shielded VM Local Certificates" 268797c8cbc6c
 Import both the Signing and Encryption certificate on the Host where you want the VM to be migrated.
 
 C:\certs>certutil -importPFX "Shielded VM Local Certificates" "C:\Certs\ankit-VMEncryption.pfx"
-
+It will ask for password, enter L@m12345 and this will import the certificates.
+ 
 If the certificates are present on the server, then VM will search for its key protector and VM will find the protector and it will boot up without any issue.
 
 
