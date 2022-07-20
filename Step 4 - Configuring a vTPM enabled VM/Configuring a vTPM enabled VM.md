@@ -15,6 +15,7 @@ Get-HgsClientConfiguration
 
 
 We can switch from Local mode to HGS mode by running below command,
+
 Set-HgsClientConfiguration -AttestationServerUrl "http://Myhgs.Hgslab.local/Attestation" -KeyProtectionServerUrl "http://Myhgs.Hgslab.local/keyProtection"
 
 ![image](https://user-images.githubusercontent.com/71546848/180093166-1485c8e3-f6ba-45fd-9bf2-0709911a9de0.png)
