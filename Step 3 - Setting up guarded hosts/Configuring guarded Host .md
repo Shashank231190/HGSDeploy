@@ -38,6 +38,7 @@ Add CI Policy of Guarded Host on HGS Server
 Add-HgsAttestationCIPolicy -Path C:\attestationdata\CI_POLICY_AUDIT.bin -Name "AllowMicrosoft-AUDIT-CI1"
 
 Once added we can check the host configuration by running below command.
+
 Get-HgsClientConfiguration
 ![Hgsclientconfig](https://user-images.githubusercontent.com/71546848/179978085-7fa77b0e-2b68-4d71-99f1-4960b4bb237f.jpg)
 
