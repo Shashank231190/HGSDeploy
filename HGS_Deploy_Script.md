@@ -1,4 +1,4 @@
-#Variables
+# Variables
 $GHostPlainPassword="Welcome@1234" #password to access Guarded nodes Compute1 and Compute2
 $HGSPlainPassword   ="Welcome@1234" #password to access HGS cluster nodes. In production environments it should be different
 
@@ -20,6 +20,8 @@ do{
     Start-Sleep 5
 }until ($HGSServerIPs.count -eq 3)
 
+# Configuring HGS Server
+
 #Install required HGS feature on HGS VMs
 Invoke-Command -VMName *HGS1,*HGS2 -Credential $HGSCreds -ScriptBlock {
     Install-WindowsFeature -Name HostGuardianServiceRole -IncludeManagementTools
@@ -37,6 +39,8 @@ Invoke-Command -VMName *HGS1 -Credential $HGSCreds -scriptblock {
 #restart HGS1
 Restart-VM -VMName *HGS1 -Type Reboot -Force -Wait -For HeartBeat
 
+# Setting up DNS Forwarder
+
 #Set the DNS forwarder on the fabric DC so other nodes can find the new domain
 Invoke-Command -VMName *DC -Credential $FabricCreds -ScriptBlock {
     Add-DnsServerConditionalForwarderZone -Name $using:HGSDomainName -ReplicationScope Forest -MasterServers $using:HgsServerIPs
@@ -52,7 +56,17 @@ do {
     }
 }until($Result)
 
-#add HGS2 
+#Wait for HGS2 to finish dcpromo
+$Result=$null
+do {
+    $Result=Invoke-Command -VMName *HGS2 -Credential $HGSDomainCreds -ScriptBlock {
+        Get-ADComputer -Filter * -Server HGS2
+        Start-Sleep 5
+    }
+}until($Result)
+
+
+# Add HGSServer on HGS2 
 Invoke-Command -VMName *HGS2 -Credential $HGSCreds -ScriptBlock {
     $SafeModeAdministratorPassword = ConvertTo-SecureString -AsPlainText $using:SafeModeAdministratorPlainPassword -Force
     Install-HgsServer -HgsDomainName $using:HGSDomainName -HgsDomainCredential $using:HGSDomainCreds -SafeModeAdministratorPassword $SafeModeAdministratorPassword #-Restart
@@ -60,6 +74,8 @@ Invoke-Command -VMName *HGS2 -Credential $HGSCreds -ScriptBlock {
 
 #restart HGS2 
 Restart-VM -VMName *HGS2 -Type Reboot -Force -Wait -For HeartBeat
+
+# Creating Certificates for HGS Server
 
 #you can create CA in Bastion forest https://docs.microsoft.com/en-us/windows-server/security/guarded-fabric-shielded-vm/guarded-fabric-obtain-certs#request-certificates-from-your-certificate-authority
 
@@ -78,15 +94,6 @@ Invoke-Command -VMName *HGS1 -Credential $HGSDomainCreds -ScriptBlock {
     Initialize-HgsServer -HgsServiceName $using:HGSServiceName -SigningCertificatePath "$env:temp\signCert.pfx" -SigningCertificatePassword $certificatePassword -EncryptionCertificatePath "$env:Temp\encCert.pfx" -EncryptionCertificatePassword $certificatePassword -TrustTpm -hgsversion V1
 }
 
-# Wait for HGS2 to finish dcpromo
-$Result=$null
-do {
-    $Result=Invoke-Command -VMName *HGS2 -Credential $HGSDomainCreds -ScriptBlock {
-        Get-ADComputer -Filter * -Server HGS2
-        Start-Sleep 5
-    }
-}until($Result)
-
 
 # Join HGS2 to the cluster
 Invoke-Command -VMName *HGS2 -Credential $HGSDomainCreds -ScriptBlock {
@@ -103,15 +110,17 @@ Invoke-Command -VMName *Compute1,*Compute2 -Credential $FabricCreds -ScriptBlock
     Install-WindowsFeature HostGuardian -IncludeManagementTools
 }
 
-# Restart compute nodes
+#Restart compute nodes
 Restart-VM -VMName *Compute1,*Compute2 -Type Reboot -Force -Wait -For HeartBeat
 
-# Wait for installation to complete
+#Wait for installation to complete
 #Start-Sleep 60
 
-# Set registry key to not require IOMMU for VBS in VMs and apply default CI policy
-# Also generate attestation artifacts (CI policy, TPM EK, and TPM baseline)
-# You should also include https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/microsoft-recommended-block-rules
+#Set registry key to not require IOMMU for VBS in VMs and apply default CI policy
+#Also generate attestation artifacts (CI policy, TPM EK, and TPM baseline)
+#You should also include https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/microsoft-recommended-block-rules
+
+# Generating attestation artifacts (CI policy, TPM EK, and TPM baseline)
 
 #grab recommended xml blocklist from GitHub
 #[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
@@ -143,7 +152,7 @@ Invoke-Command -VMName *Compute1, *Compute2 -Credential $FabricCreds -ScriptBloc
     Get-HgsAttestationBaselinePolicy -Path "C:\attestationdata\TPM_Baseline_$env:COMPUTERNAME.xml" -SkipValidation
 }
 
-# Reboot VMs again for setting to take effect
+#Reboot VMs again for setting to take effect
 Restart-VM -Name *Compute1,*Compute2 -Type Reboot -Force -Wait -For HeartBeat
 
 # Collect attestation artifacts from hosts
