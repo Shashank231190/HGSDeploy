@@ -94,7 +94,7 @@
 #or just create self signed cert
 
     Invoke-Command -VMName *HGS1 -Credential $HGSDomainCreds -ScriptBlock {
-    $certificatePassword = ConvertTo-SecureString -AsPlainText -String "LS1setup!" -Force
+    $certificatePassword = ConvertTo-SecureString -AsPlainText -String "Welcome@1234" -Force
     $signCert = New-SelfSignedCertificate -Subject "CN=HGS Signing Certificate"
     Export-PfxCertificate -FilePath $env:temp\signCert.pfx -Password $certificatePassword -Cert $signCert
     Remove-Item $signCert.PSPath
