@@ -13,6 +13,9 @@ Live migration of 'Virtual Machine 'VMname**' failed.
 Virtual machine migration operation for ''VMname**'’ failed at migration destination 'HostName-**'. (Virtual machine ID <GUID>)
 The version of the device 'Microsoft Virtual TPM Device' of the virtual machine 'VMname**' is not compatible with device on physical computer 'HostName-**'. (Virtual machine ID <GUID>)
 The key protector for the virtual machine '' could not be unwrapped. HostGuardianService returned: One or more arguments are invalid (0x80070057) . Details are included in the HostGuardianService-Client event log. (Virtual machine ID )
+![image](https://user-images.githubusercontent.com/71546848/180097420-a59650bc-22ef-4c74-968a-d831bf523bcb.png)
+
+![image](https://user-images.githubusercontent.com/71546848/180097457-85a5eea2-0e65-4515-8eb9-1e0b3ad4ad15.png)
 
 # Resolution
 
