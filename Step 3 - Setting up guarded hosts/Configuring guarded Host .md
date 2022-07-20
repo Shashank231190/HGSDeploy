@@ -19,11 +19,11 @@ Install-WindowsFeature HostGuardian -IncludeManagementTools
 * Also generate attestation artifacts (CI policy, TPM EK, and TPM baseline)
 
 TPM mode uses a TPM identifier (also called a platform identifier or endorsement key [EKpub]) to begin determining whether a particular host is authorized as "guarded." This mode of attestation uses Secure Boot and code integrity measurements to ensure that a given Hyper-V host is in a healthy state and is running only trusted code. In order for attestation to understand what is and is not healthy, you must capture the following artifacts:
-* TPM identifier (EKpub)
+* TPM identifier (EKpub) - 
 This information is unique to each Hyper-V host
-* TPM baseline (boot measurements)
+* TPM baseline (boot measurements) - 
 This is applicable to all Hyper-V hosts that run on the same class of hardware
-* Code integrity policy (an allowlist of allowed binaries)
+* Code integrity policy (an allowlist of allowed binaries) - 
 This is applicable to all Hyper-V hosts that share common hardware and software
 
 It is recommended to capture the baseline and CI policy from a "reference host" that is representative of each unique class of Hyper-V hardware configuration within your datacenter. Beginning with Windows Server version 1709, sample CI policies are included at C:\Windows\schemas\CodeIntegrity\ExamplePolicies.
