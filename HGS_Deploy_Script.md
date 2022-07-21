@@ -1,4 +1,6 @@
-# Settings up Variables    $GHostPlainPassword="Welcome@1234" #password to access Guarded nodes Compute1 and Compute2
+# Settings up Variables    
+
+    $GHostPlainPassword="Welcome@1234" #password to access Guarded nodes Compute1 and Compute2
     $HGSPlainPassword   ="Welcome@1234" #password to access HGS cluster nodes. In production environments it should be different
 
     $SafeModeAdministratorPlainPassword="Welcome@1234" #SafeModePassword for HGS Domain
