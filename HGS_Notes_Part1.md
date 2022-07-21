@@ -11,7 +11,9 @@ I am only using on server 2016 DC edition with latest patches.
 3. Install Host Gaurdian Role
 
     a. This will install ACtive Directory Role
+    
     #b. It will become member of failover cluster
+    
     c. Automatically configured with a "Just Enough Administration" and registered with pre-defined Active Directory User groups.
 
 
