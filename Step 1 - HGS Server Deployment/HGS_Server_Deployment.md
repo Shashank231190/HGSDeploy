@@ -29,7 +29,8 @@ Install-HgsServer -HgsDomainName ‘HGSLab.Local' -SafeModeAdministratorPassword
 Note : Replace ‘HGSLab.local’ with a FQDN of your choice.
  
 After machine reboot, log in with the domain account with the same password which you have used for the local account.
-# Installing HGS Server will promote the HGS Server as Domain controller with the domain name provided with HgsDomainName switch.
+ 
+#Installing HGS Server will promote the HGS Server as Domain controller with the domain name provided with HgsDomainName switch.
 
 # We can install HGS on second node by following below commands.
 
