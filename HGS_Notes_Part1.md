@@ -9,8 +9,9 @@ I am only using on server 2016 DC edition with latest patches.
 1. Installed Windows Server 2016 1607 build.
 2. Applied latest updates.
 3. Install Host Gaurdian Role
+
     a. This will install ACtive Directory Role
-    # b. It will become member of failover cluster
+    #b. It will become member of failover cluster
     c. Automatically configured with a "Just Enough Administration" and registered with pre-defined Active Directory User groups.
 
 
