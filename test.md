@@ -4,7 +4,8 @@
   2. Install latest updates
   3. Join gaurded host (call it gaurdhost1)to some other domain controller in the fabric other than HGS Domain Controller.
   4. Install the guarded host & install Hyper-V, HostGuardian (Hyper-V) support - I am using Nested Virtualization
-  Install-WindowsFeature Hyper-V, HostGuardian -IncludeManagementTools -Restart
+  
+    Install-WindowsFeature Hyper-V, HostGuardian -IncludeManagementTools -Restart
 
   Name : gaurdhost1
   IP Address : 80.0.0.10
