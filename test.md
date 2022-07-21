@@ -20,7 +20,7 @@ Before we proceed to configuring guarded hosts there are several steps that shou
    a. One Domain Controller Promoted when HGS role is installed named as HGSLab.Local domain.  
    b. Other Domain Controller to which gaurdeded host is using as a logon server.
 
-  Once Conditional forwarder is set make sure FQDN of both the DC is pingable to & fro.
+  Once Conditional forwarder is set make sure FQDN of both the DC is pingable to & from.
 
 2. The one-way forest trust between the hgs and fabric domains must be configured (HGS domain trusts FABRIC domain).
 
