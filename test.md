@@ -12,6 +12,7 @@
 
 
 Before we proceed to configuring guarded hosts there are several steps that should be taken.
+
   1.For guarded hosts to be able to retrieve information from the HGS server and vice versa I’ll have to create the DNS forwarders in both domains. 
   Before I do that I’ll create the reverse lookup zones on both domain controllers:
 
