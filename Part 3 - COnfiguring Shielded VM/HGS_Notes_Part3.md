@@ -1,4 +1,4 @@
-******** Part 3 Deploying Shielded VM ********
+# ******** Part 3 Deploying Shielded VM ********
 
 Once the HGS service and guarded fabric are in place I can move on to the final step of this test deployment – shielding the existing virtual machine(s). 
 The high-level steps for this procedure includes configuring the virtual machine on some other Hyper-V host – 
