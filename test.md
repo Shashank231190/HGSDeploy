@@ -16,7 +16,7 @@ Before we proceed to configuring guarded hosts there are several steps that shou
   1. For guarded hosts to be able to retrieve information from the HGS server and vice versa I’ll have to create the DNS forwarders in both domains. 
   Before I do that I’ll create the reverse lookup zones on both domain controllers:
 
-   a. One Domain Controller Promoted when HGS role is installed named as HGSLab.Local domain.
+   a. One Domain Controller Promoted when HGS role is installed named as HGSLab.Local domain.  
    b. Other Domain Controller to which gaurdeded host is using as a logon server.
 
   Once Conditional forwarder is set make sure FQDN of both the DC is pingable to & fro.
