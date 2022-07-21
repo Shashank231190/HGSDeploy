@@ -10,11 +10,13 @@ So now we going to use tenant 2k19N2 to prepare the VM.
 
 First off I retreive HGS guardian metadata from the HGS server:
 
-2.Invoke-WebRequest http://hgscluster.hgslab.local/KeyProtection/service/metadata/2014-07/metadata.xml -OutFile C:\HGS\HGSGuardian.xml
+2. Invoke-WebRequest http://hgscluster.hgslab.local/KeyProtection/service/metadata/2014-07/metadata.xml -OutFile C:\HGS\HGSGuardian.xml
 Bring this file "HGSGuardian.xml" on the tenant host.
 
-3.Then let’s create the new guardian object that will serve as the VM’s owner using the new self-signed certificates:
+3. Then let’s create the new guardian object that will serve as the VM’s owner using the new self-signed certificates:
 Before running the below command make sure Host Guardian Hyper-V support (HGS client service is installed on the tenant)
-$OwnerGuardian = New-HgsGuardian –Name ‘OwnerGuardian’ –GenerateCertificates
+
+    $OwnerGuardian = New-HgsGuardian –Name ‘OwnerGuardian’ –GenerateCertificates
+    
 
 
