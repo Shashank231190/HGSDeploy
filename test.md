@@ -32,15 +32,15 @@ computer accounts which will deploye as GuardedHost and intended to run shielded
 Get-HGSServer command
 PS C:\> get-HGSserver
 
-Name                           Value
-----                           -----
-AttestationOperationMode       AD
-AttestationUrl                 {http://hgscluster.hgslab.local/Attestation}
-KeyProtectionUrl               {http://hgscluster.hgslab.local/KeyProtection} 
+
+    Name                           Value
+    ----                           -----
+    AttestationOperationMode       AD
+    AttestationUrl                 {http://hgscluster.hgslab.local/Attestation}
+    KeyProtectionUrl               {http://hgscluster.hgslab.local/KeyProtection} 
 
 
 Set-HgsClientConfiguration -AttestationServerUrl "http://hgscluster.hgslab.local/Attestation" -KeyProtectionServerUrl "http://hgscluster.hgslab.local/KeyProtection"
-
 
     Output : 
 
