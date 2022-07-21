@@ -13,7 +13,7 @@
 
 Before we proceed to configuring guarded hosts there are several steps that should be taken.
 
-  1.For guarded hosts to be able to retrieve information from the HGS server and vice versa I’ll have to create the DNS forwarders in both domains. 
+  1. For guarded hosts to be able to retrieve information from the HGS server and vice versa I’ll have to create the DNS forwarders in both domains. 
   Before I do that I’ll create the reverse lookup zones on both domain controllers:
 
    a. One Domain Controller Promoted when HGS role is installed named as HGSLab.Local domain.
@@ -21,9 +21,9 @@ Before we proceed to configuring guarded hosts there are several steps that shou
 
   Once Conditional forwarder is set make sure FQDN of both the DC is pingable to & fro.
 
-  2.The one-way forest trust between the hgs and fabric domains must be configured (HGS domain trusts FABRIC domain).
+  2. The one-way forest trust between the hgs and fabric domains must be configured (HGS domain trusts FABRIC domain).
 
-  3.Once the one way trust has been created, we need to create a security group on Pikachu.Local Domain & register this on HGS server. This security group will host       the computer accounts which will deploye as GuardedHost and intended to run shielded VM's. Follow the video tutorial to learn about it.
+  3. Once the one way trust has been created, we need to create a security group on Pikachu.Local Domain & register this on HGS server. This security group will host       the computer accounts which will deploye as GuardedHost and intended to run shielded VM's. Follow the video tutorial to learn about it.
 
 
   4. Configure the host's key protection & attestation URL's by issuing the following command on guarded host, however to get the URL's jump to HGS server and run
