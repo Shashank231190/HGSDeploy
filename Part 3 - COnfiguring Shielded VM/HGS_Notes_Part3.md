@@ -37,22 +37,23 @@ certificate.
 
 `$Guardian = Import-HgsGuardian -Path "C:\HGS\HGSGuardian.xml" -Name "FabricGuardian" –AllowUntrustedRoot`
 
-***
-Output for both the objects
-
-    PS C:\> $OwnerGuardian
-
-Name          HasPrivateSigningKey Signing Certificate Subject
-----          -------------------- ---------------------------
-OwnerGuardian True                 CN=Shielded VM Signing Certificate (OwnerGuardian) (2k16N1)
 
 
-PS C:\> $Guardian
 
-Name           HasPrivateSigningKey Signing Certificate Subject
-----           -------------------- ---------------------------
-FabricGuardian False                CN=HGS Signing Certificate
+> Output for both the objects
 
+> PS C:\> $OwnerGuardian
+
+> Name          HasPrivateSigningKey Signing Certificate Subject
+> ----          -------------------- ---------------------------
+> OwnerGuardian True                 CN=Shielded VM Signing Certificate (OwnerGuardian) (2k16N1)
+
+
+> PS C:\> $Guardian
+
+> Name           HasPrivateSigningKey Signing Certificate Subject
+> ----           -------------------- ---------------------------
+> FabricGuardian False                CN=HGS Signing Certificate
 
 ***
 
@@ -62,24 +63,23 @@ FabricGuardian False                CN=HGS Signing Certificate
 `$KeyProtector = New-HgsKeyProtector -Owner $OwnerGuardian -Guardian $Guardian -AllowUntrustedRoot`
 
 
-    
-#### Configure a key protector for the virtual machine named GuardedVMTest in my lab
+##### Configure a key protector for the virtual machine named GuardedVMTest in my lab
 
 `Set-VMKeyProtector -Vmname GuardedVMTest -KeyProtector $KeyProtector.RawData`
 
-
-### Set the security policy for the VM GuardedVMTest
+##### Set the security policy for the VM GuardedVMTest
 
 `Set-VMSecurityPolicy -VMName GuardedVMTest -shielded $false`
 
-#### Enable vTPM on the GuardedVMTest to be able to use it for BitLocker 
+##### Enable vTPM on the GuardedVMTest to be able to use it for BitLocker 
+
 ***
 Note : This option is only avaiable on gen 2 VM
 ***
 
 `Enable-VMTPM -VMNAME GuardedVMTest`
 
-***
+#####
 Note:
 Before you move a shielded VM to the guarded host it must prepared for the remote management (WSMan, RDP)! In this test I used the -Shielded $false vm security policy that means fabric administrators still can access the GuardedVMTest virtual machine because it has been shielded using Encryption Supported mode which permits Hyper-V console connections to the shielded VMs. If I had used -Shielded $true vm security policy the only way to connect to the DC vm would be via RDP or WSman.
 ***
