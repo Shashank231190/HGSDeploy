@@ -5,7 +5,7 @@ Step 1: Components required for setting up a Shielded VM environment
 
 2 HGS Cluster Nodes – 	(Hgslab.local)
 
-HGS1 – 192.168.1.50
+    HGS1 – 192.168.1.50
 
 HGS2 – 192.168.1.51
 
