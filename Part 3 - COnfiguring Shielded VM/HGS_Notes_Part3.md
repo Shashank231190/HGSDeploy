@@ -12,7 +12,7 @@ Current Setup:
 
 Steps: 
 
-1. VM which needs to be prepared to become shielded VM - needs to be turned off. First off I retreive HGS guardian metadata from the HGS server:
+1. Turn off the VM which needs to be shielded. First off I retreive HGS guardian metadata from the HGS server:
 
  Note: Create HGS directory on c:\ path on HGS server and then run below command on HGS server.
 
@@ -25,6 +25,7 @@ Before running the below command make sure "Host Guardian Hyper-V support" (HGS 
 Note: Guardian Object cannot be created without HGS service module and thats why we need to install this service on tenant host.
 
 $OwnerGuardian = New-HgsGuardian –Name "OwnerGuardian" –GenerateCertificates
+
 [Remember this certificate is generated on tenant Host and if user uses this certificate as a protector, than this needs to be imported to the guarded host. This further explains the step 1, where metadata for HGS server will be use to further wrap this ceritificate itself and then VM can be imported without importing the
 certificate.]
 
@@ -78,7 +79,7 @@ Enable-VMTPM -VMNAME GuardedVMTest
 Note:
 
 <
-Attention! Before you move a shielded VM to the guarded host it must prepared for the remote management (WSMan, RDP)! In this test I used the -Shielded $false vm security policy that means fabric administrators still can access the GuardedVMTest virtual machine because it has been shielded using Encryption Supported mode which permits Hyper-V console connections to the shielded VMs. If I had used -Shielded $true vm security policy the only way to connect to the DC vm would be via RDP or WSman.
+Before you move a shielded VM to the guarded host it must prepared for the remote management (WSMan, RDP)! In this test I used the -Shielded $false vm security policy that means fabric administrators still can access the GuardedVMTest virtual machine because it has been shielded using Encryption Supported mode which permits Hyper-V console connections to the shielded VMs. If I had used -Shielded $true vm security policy the only way to connect to the DC vm would be via RDP or WSman.
 >
 
 
