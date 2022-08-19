@@ -79,7 +79,7 @@ Note : This option is only avaiable on gen 2 VM
 
 `Enable-VMTPM -VMNAME GuardedVMTest`
 
-#####
+***
 Note:
 Before you move a shielded VM to the guarded host it must prepared for the remote management (WSMan, RDP)! In this test I used the -Shielded $false vm security policy that means fabric administrators still can access the GuardedVMTest virtual machine because it has been shielded using Encryption Supported mode which permits Hyper-V console connections to the shielded VMs. If I had used -Shielded $true vm security policy the only way to connect to the DC vm would be via RDP or WSman.
 ***
