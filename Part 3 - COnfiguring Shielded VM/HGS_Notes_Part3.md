@@ -10,20 +10,19 @@ Current Setup:
 3. Using tenant server to prepare shielded VM.
 
 
-Steps: 
+ Steps: 
 
-1. Turn off the VM which needs to be shielded. First off I retreive HGS guardian metadata from the HGS server:
-
- Note: Create HGS directory on c:\ path on HGS server and then run below command on HGS server.
-
-2. Invoke-WebRequest http://hgscluster.hgslab.local/KeyProtection/service/metadata/2014-07/metadata.xml -OutFile C:\HGS\HGSGuardian.xml
+# Turn off the VM which needs to be shielded. First off I retreive HGS guardian metadata from the HGS server:
+# Note: Create HGS directory on c:\ path on HGS server and then run below command on HGS server.
+<sub>
+  Invoke-WebRequest http://hgscluster.hgslab.local/KeyProtection/service/metadata/2014-07/metadata.xml -OutFile C:\HGS\HGSGuardian.xml
+</sub>
 Bring this file "HGSGuardian.xml" on the tenant host.
 
 3. Then let’s create the new guardian object that will serve as the VM’s owner using the new self-signed certificates:
 Before running the below command make sure "Host Guardian Hyper-V support" (HGS client service is installed on the tenant)
 
 Note: Guardian Object cannot be created without HGS service module and thats why we need to install this service on tenant host.
-
 $OwnerGuardian = New-HgsGuardian –Name "OwnerGuardian" –GenerateCertificates
 
 [Remember this certificate is generated on tenant Host and if user uses this certificate as a protector, than this needs to be imported to the guarded host. This further explains the step 1, where metadata for HGS server will be use to further wrap this ceritificate itself and then VM can be imported without importing the
