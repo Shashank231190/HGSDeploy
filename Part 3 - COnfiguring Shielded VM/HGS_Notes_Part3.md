@@ -1,4 +1,4 @@
-### ******** Part 3 Deploying Shielded VM ********
+### Part 3 Deploying Shielded VM 
 
 ### Once the HGS service and guarded fabric are in place I can move on to the final step of this test deployment – shielding the existing virtual machine(s). 
 ### The high-level steps for this procedure includes configuring the virtual machine on some other Hyper-V host –  called tenant Hyper-V hosts.
@@ -13,9 +13,11 @@
 ### Turn off the VM which needs to be shielded. First off I retreive HGS guardian metadata from the HGS server:
 #### Note: Create HGS directory on c:\ path on HGS server and then run below command on HGS server.
 
-    Invoke-WebRequest http://hgscluster.hgslab.local/KeyProtection/service/metadata/2014-07/metadata.xml -OutFile C:\HGS\HGSGuardian.xml
+`Invoke-WebRequest http://hgscluster.hgslab.local/KeyProtection/service/metadata/2014-07/metadata.xml -OutFile C:\HGS\HGSGuardian.xml`
 
-#### Bring this file "HGSGuardian.xml" on the tenant host.
+***
+Bring this file "HGSGuardian.xml" on the tenant host.
+***
 
 3. Then let’s create the new guardian object that will serve as the VM’s owner using the new self-signed certificates:
 Before running the below command make sure "Host Guardian Hyper-V support" (HGS client service is installed on the tenant)
@@ -25,8 +27,8 @@ Note: Guardian Object cannot be created without HGS service module and thats why
 $OwnerGuardian = New-HgsGuardian –Name "OwnerGuardian" –GenerateCertificates
 
 
-[Remember this certificate is generated on tenant Host and if user uses this certificate as a protector, than this needs to be imported to the guarded host. This further explains the step 1, where metadata for HGS server will be use to further wrap this ceritificate itself and then VM can be imported without importing the
-certificate.]
+Remember this certificate is generated on tenant Host and if user uses this certificate as a protector, than this needs to be imported to the guarded host. This further explains the step 1, where metadata for HGS server will be use to further wrap this ceritificate itself and then VM can be imported without importing the
+certificate.
 
 4. Create one more guardian to wrap the $OwnerGuardian as a key Protector.
 $Guardian = Import-HgsGuardian -Path "C:\HGS\HGSGuardian.xml" -Name "FabricGuardian" –AllowUntrustedRoot
