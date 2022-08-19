@@ -1,23 +1,24 @@
-# ******** Part 3 Deploying Shielded VM ********
+### ******** Part 3 Deploying Shielded VM ********
 
-Once the HGS service and guarded fabric are in place I can move on to the final step of this test deployment – shielding the existing virtual machine(s). 
-The high-level steps for this procedure includes configuring the virtual machine on some other Hyper-V host –  called tenant Hyper-V hosts.
+### Once the HGS service and guarded fabric are in place I can move on to the final step of this test deployment – shielding the existing virtual machine(s). 
+### The high-level steps for this procedure includes configuring the virtual machine on some other Hyper-V host –  called tenant Hyper-V hosts.
 
-Current Setup:
+### Current Setup:
 
 1. Gaurded Host
 2. HGS server
 3. Using tenant server to prepare shielded VM.
 
 
-Steps: 
+### Steps: 
 
-1. Turn off the VM which needs to be shielded. First off I retreive HGS guardian metadata from the HGS server:
+### Turn off the VM which needs to be shielded. First off I retreive HGS guardian metadata from the HGS server:
 
- Note: Create HGS directory on c:\ path on HGS server and then run below command on HGS server.
+#### Note: Create HGS directory on c:\ path on HGS server and then run below command on HGS server.
 
-2. Invoke-WebRequest http://hgscluster.hgslab.local/KeyProtection/service/metadata/2014-07/metadata.xml -OutFile C:\HGS\HGSGuardian.xml
-Bring this file "HGSGuardian.xml" on the tenant host.
+    Invoke-WebRequest http://hgscluster.hgslab.local/KeyProtection/service/metadata/2014-07/metadata.xml -OutFile C:\HGS\HGSGuardian.xml
+
+#### Bring this file "HGSGuardian.xml" on the tenant host.
 
 3. Then let’s create the new guardian object that will serve as the VM’s owner using the new self-signed certificates:
 Before running the below command make sure "Host Guardian Hyper-V support" (HGS client service is installed on the tenant)
