@@ -7,12 +7,11 @@ Step 1: Components required for setting up a Shielded VM environment
 
     HGS1 – 192.168.1.50
 
-HGS2 – 192.168.1.51
+# HGS2 – 192.168.1.51
 
-1 DC – Pikachu.Local –192.168.1.1
-
+    1 DC – Pikachu.Local –192.168.1.1
 2 Guarded Hosts Cluster
 
-Compute1 – 192.168.1.2
+# Compute1 – 192.168.1.2
 
 Compute2 -192.168.1.3
