@@ -14,4 +14,4 @@ Step 1: Components required for setting up a Shielded VM environment
 
 # Compute1 – 192.168.1.2
 
-Compute2 -192.168.1.3
+    Compute2 -192.168.1.3
