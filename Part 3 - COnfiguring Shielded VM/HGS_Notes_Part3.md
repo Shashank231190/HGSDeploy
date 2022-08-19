@@ -5,9 +5,9 @@
 
 #####  Current Setup:
 
-1. Gaurded Host
-2. HGS server
-3. Using tenant server to prepare shielded VM.
+1. Gaurded Host - GuardHost1
+2. HGS server - HGS1
+3. Using tenant server to prepare shielded VM. - 2K16
 
 ##### Steps: 
 ##### Turn off the VM which needs to be shielded. First off I retreive HGS guardian metadata from the HGS server:
@@ -42,18 +42,19 @@ certificate.
 
 > Output for both the objects
 
-> PS C:\> $OwnerGuardian
+***
+PS C:\> $OwnerGuardian
 
-> Name          HasPrivateSigningKey Signing Certificate Subject
-> ----          -------------------- ---------------------------
-> OwnerGuardian True                 CN=Shielded VM Signing Certificate (OwnerGuardian) (2k16N1)
+ Name          HasPrivateSigningKey Signing Certificate Subject
+----          -------------------- ---------------------------
+ OwnerGuardian True                 CN=Shielded VM Signing Certificate (OwnerGuardian) (2k16N1)
 
 
-> PS C:\> $Guardian
+PS C:\> $Guardian
 
-> Name           HasPrivateSigningKey Signing Certificate Subject
-> ----           -------------------- ---------------------------
-> FabricGuardian False                CN=HGS Signing Certificate
+ Name           HasPrivateSigningKey Signing Certificate Subject
+----           -------------------- ---------------------------
+ FabricGuardian False                CN=HGS Signing Certificate
 
 ***
 
@@ -81,7 +82,7 @@ Note : This option is only avaiable on gen 2 VM
 
 ***
 Note:
-Before you move a shielded VM to the guarded host it must prepared for the remote management (WSMan, RDP)! In this test I used the -Shielded $false vm security policy that means fabric administrators still can access the GuardedVMTest virtual machine because it has been shielded using Encryption Supported mode which permits Hyper-V console connections to the shielded VMs. If I had used -Shielded $true vm security policy the only way to connect to the DC vm would be via RDP or WSman.
+In this test I used the -Shielded $false VM security policy that means fabric administrators still can access the GuardedVMTest virtual machine via connect option on the VM . If I had used -Shielded $true VM security policy the only way to connect to the GuardedVMTest VM would be via RDP or WSman.
 ***
 
-##### Export the GuardedVMTest vm from HV1 Hyper-V host and import it to GuardHost1 which is one of guarded hosts.
+##### Export the GuardedVMTest vm from tenant Hyper-V host 2k16 and import it to GuardHost1 which is one of guarded hosts.
