@@ -1,6 +1,7 @@
 # Setting up Guarded Host with TPM attestation
 Guarded hosts using TPM mode must meet the following prerequisites:
-  Hardware: One host is required for initial deployment. To test Hyper-V live migration for shielded VMs, you must have at least two hosts.
+
+  Hardware: One host is required for initial deployment. To test Hyper-V live migration for shielded VMs, you must have at least two hosts. 
   Hosts must have:
     IOMMU and Second Level Address Translation (SLAT)
     TPM 2.0
