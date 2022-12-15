@@ -36,7 +36,7 @@ Here Guarded domain fqdn is HGSLab.local   with IP 192.168.1.50
   
 To add the HGSLab.local   to the trusted group, run the below command.
   
-netdom trust HGSLab.local   /domain: HGSLab.local   /userD: HGSLab.local\Administrator /passwordD:<PASSWORD> /add
+netdom trust HGSLab.local   /domain: pikachu.local   /userD: pikachu.local\Administrator /passwordD:<PASSWORD> /add
   
 Note : Replace “<PASSWORD>” with appropriate credential details.
   
