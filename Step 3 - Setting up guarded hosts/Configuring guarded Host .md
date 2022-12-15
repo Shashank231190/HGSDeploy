@@ -30,19 +30,20 @@ It is recommended to capture the baseline and CI policy from a "reference host" 
 https://docs.microsoft.com/en-us/windows-server/security/guarded-fabric-shielded-vm/guarded-fabric-tpm-trusted-attestation-capturing-hardware
 
 Endorsement key for each guarded host needs to be added on HGS Sever, But only one copy of the baseline and CI policy, since they should be identical on both hosts
-Add-HgsAttestationTpmHost -Path C:\attestationdata\TPM_EK_COMPUTE1.xml -Force
-Add-HgsAttestationTpmHost -Path C:\attestationdata\TPM_EK_Compute2.xml -Force
-Add TPM Baseline of a Guarded Host on HGS Server
-Add-HgsAttestationTpmPolicy -Path C:\attestationdata\TPM_Baseline_COMPUTE1.xml -Name "Hyper-V TPM Baseline1"
-Add CI Policy of Guarded Host on HGS Server
-Add-HgsAttestationCIPolicy -Path C:\attestationdata\CI_POLICY_AUDIT.bin -Name "AllowMicrosoft-AUDIT-CI1"
+
+    Add-HgsAttestationTpmHost -Path C:\attestationdata\TPM_EK_COMPUTE1.xml -Force
+    Add-HgsAttestationTpmHost -Path C:\attestationdata\TPM_EK_Compute2.xml -Force
+    Add TPM Baseline of a Guarded Host on HGS Server
+    Add-HgsAttestationTpmPolicy -Path C:\attestationdata\TPM_Baseline_COMPUTE1.xml -Name "Hyper-V TPM Baseline1"
+    Add CI Policy of Guarded Host on HGS Server
+    Add-HgsAttestationCIPolicy -Path C:\attestationdata\CI_POLICY_AUDIT.bin -Name "AllowMicrosoft-AUDIT-CI1"
 
 Once added we can check the host configuration by running below command.
 
-Get-HgsClientConfiguration
+    Get-HgsClientConfiguration
 
 ![Hgsclientconfig](https://user-images.githubusercontent.com/71546848/179978085-7fa77b0e-2b68-4d71-99f1-4960b4bb237f.jpg)
 
 
 
-Get-HgsTrace -RunDiagnostics -Detailed
+    Get-HgsTrace -RunDiagnostics -Detailed
