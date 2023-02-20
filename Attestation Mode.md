@@ -23,8 +23,10 @@ The AD attestation is the way to identify servers that will be able to run the S
 
 ![image](https://user-images.githubusercontent.com/71546848/220192682-b8f3058e-2b68-4e3e-bea9-b790e442c012.png)
 
+Admin-trusted attestation is deprecated beginning with Windows Server 2019.
 
-TPM-trusted attestation (hardware-based)
+
+# TPM-trusted attestation (hardware-based)
 
 ![image](https://user-images.githubusercontent.com/71546848/220192830-5b31ea51-fb33-4148-9405-1692f92fdefc.png)
 
@@ -68,3 +70,13 @@ TPM based Attestation Measurements performed/requested by AS
     Unified Extensible Firmware Interface
     Validate UEFI secure boot parameters
 
+
+# Host key attestation (based on asymmetric key pairs)
+
+ Intended to support existing host hardware where TPM 2.0 isn't available. Requires fewer configuration steps and is compatible with commonplace server hardware.
+ 
+ Guarded hosts are approved based on possession of the key.
+ 
+ Reference:
+ https://learn.microsoft.com/en-us/windows-server/security/guarded-fabric-shielded-vm/guarded-fabric-create-host-key
+ 
