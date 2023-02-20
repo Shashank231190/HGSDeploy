@@ -16,4 +16,7 @@ Attestation of health
 VM-workloads can only run on “healthy” hosts
  
 
+Virtual Machine Types
+
+
 
