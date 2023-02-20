@@ -18,5 +18,6 @@ VM-workloads can only run on “healthy” hosts
 
 Virtual Machine Types
 
+![image](https://user-images.githubusercontent.com/71546848/220190055-db4e0fec-783f-41b2-918e-cf7dac5e8da1.png)
 
 
