@@ -11,6 +11,8 @@ Each HGS instance is a multi-instance web app, therefore you can have multiple i
 
 ![image](https://user-images.githubusercontent.com/71546848/220195667-80b590b9-a449-4ac1-b11a-a57b290329f4.png)
 
+Provides below functionalities
+
 Guarded Hosts Verification
 
     The service verifies that only trusted fabric hosts that are pre-registered and identified by TPM hardware ID, will be authorized to run Shielded VMs in the fabric Or in the case of Admin-Attestation, that they are authorized hosts.
@@ -23,3 +25,5 @@ Key Protection
 
     A Shielded VM (when using BitLocker) can only be run by a host that is able to decrypt the vTPM of that VM (where the BitLocker key resides)
     A Guarded host should present its attestation certificate to request the decryptable Key Protector (KP) from the Key Protection Service (KPS), so that it can decrypt the vTPM.
+
+
