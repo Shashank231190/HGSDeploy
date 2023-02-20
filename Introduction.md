@@ -19,7 +19,6 @@ What do these attacks have in common?
 4. Insider attacks
 5. Fabric attacks
 
-
 ![image](https://user-images.githubusercontent.com/71546848/220170897-dbcd87d0-367c-45f9-89ae-3bb5900c8f69.png)
 
 
