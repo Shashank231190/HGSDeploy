@@ -14,10 +14,12 @@ Note: User mode code can be blocked with an appropriately configured CI policy, 
 
 Attestation of health
 VM-workloads can only run on “healthy” hosts
+![image](https://user-images.githubusercontent.com/71546848/220190199-ea577d5e-774d-4306-a76f-685ec01a65e8.png)
  
 
 Virtual Machine Types
 
-![image](https://user-images.githubusercontent.com/71546848/220190055-db4e0fec-783f-41b2-918e-cf7dac5e8da1.png)
+![image](https://user-images.githubusercontent.com/71546848/220190132-b813879c-b3ed-4b9b-8542-94c530aea6f8.png)
+
 
 
