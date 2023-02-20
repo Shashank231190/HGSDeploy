@@ -1,5 +1,22 @@
-# ABOUT
+HGS Setup 
 
+![image](https://user-images.githubusercontent.com/71546848/220174431-a432637c-7733-4fad-82b3-c5a3c59439fe.png)
+
+LAB requirement for setting up HGS cluster and Shielded VM 
+
+2 HGS Cluster Nodes – (Hgslab.local)
+
+    HGS1 – 192.168.1.50
+    HGS2 – 192.168.1.51
+    1 DC – Pikachu.Local –192.168.1.1
+
+2 Guarded Hosts Cluster
+
+    Compute1 – 192.168.1.2
+    Compute2 -192.168.1.3
+
+
+# Summary
 
 Sections are broken out as follows:
 1. Overview
