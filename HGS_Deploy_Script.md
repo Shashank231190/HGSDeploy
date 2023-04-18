@@ -209,7 +209,7 @@
 
 # Now, have the hosts try to attest
 
-    Invoke-Command -VMName *Compute1, *Compute2 -Credential $FabricCreds -ScriptBlock {
+    Invoke-Command -VMName *Compute1, *Compute2 -Credential $GHostCreds -ScriptBlock {
     Set-HgsClientConfiguration -AttestationServerUrl "http://$using:HGSServiceName.$using:HGSDomainName/Attestation" -KeyProtectionServerUrl    "http://$using:HGSServiceName.$using:HGSDomainName/KeyProtection"
     }
  
