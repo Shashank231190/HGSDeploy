@@ -31,7 +31,7 @@
         Install-WindowsFeature -Name HostGuardianServiceRole -IncludeManagementTools
     }
 
-#restart VMs
+#restart VM's
 
     Restart-VM -VMName *HGS* -Type Reboot -Force -Wait -For HeartBeat
 
